@@ -1,1 +1,1 @@
-wheater-app
+Wheater Preview React Application
