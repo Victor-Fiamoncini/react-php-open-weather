@@ -1,12 +1,15 @@
 //React:
-import React, { Component } from 'react'
+import React from 'react'
 
-//Wheater:
-export default class Wheater extends Component {
-  render() {
-    return (
-      <div>
-      </div>
-    )
-  }
-}
+//Wheater Component:
+const Wheater = props => (
+  <div>
+    { props.city && props.country && <p>Location: { props.country } , { props.city }</p> }
+    { props.temperature && <p>Temperature: { props.temperature}</p> }
+    { props.humidity && <p>Humidity: { props.humidity }</p> }
+    { props.description && <p>Conditions: { props.description }</p> }
+    { props.error && <p>{ props.error }</p> }
+  </div>
+)
+
+export default Wheater
