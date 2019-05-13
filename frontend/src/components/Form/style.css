@@ -1,0 +1,47 @@
+.form-wrapper {
+  padding: 30px;
+}
+
+.form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-wrapper form input {
+  padding: 10px 5px;
+  min-width: 300px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid aliceblue;
+  background: none;
+}
+
+.form-wrapper form input::placeholder {
+  color: antiquewhite;
+}
+
+.form-wrapper form button {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.form-wrapper form button::after {
+  content: '';
+  display: block;
+  padding: 1px;
+  width: 100%;
+  background: aliceblue;
+  transition: all 0.3s;
+  margin-top: 5px;
+  opacity: 0;
+}
+
+.form-wrapper form button:hover::after  {
+  opacity: 1;
+}

@@ -1,0 +1,11 @@
+.weather-wrapper {
+  height: 30vh;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.weather-wrapper p {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
