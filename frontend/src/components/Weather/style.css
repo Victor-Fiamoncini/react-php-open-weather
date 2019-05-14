@@ -9,3 +9,21 @@
   margin-bottom: 10px;
   font-size: 1.4rem;
 }
+
+/* Media queries: (TABLET): 768px */
+@media screen and (max-width: 768px) {
+  .weather-wrapper {
+    height: 18vh;
+  }
+}
+
+/* Media queries: (SMALL SMARTPHONES): 425px */
+@media screen and (max-width: 425px) {
+  .weather-wrapper {
+    height: 12vh;
+  }
+
+  .weather-wrapper p {
+    font-size: 1rem;
+  }
+}

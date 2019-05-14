@@ -6,8 +6,8 @@
   list-style: none;
   font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;
-  color: antiquewhite;
   font-weight: bold;
+  color: antiquewhite;
 }
 
 body {
@@ -38,4 +38,18 @@ body {
   text-align: center;
   color: #000;
   background: #777;
+}
+
+/* Media queries: (TABLET): 768px */
+@media screen and (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+}
+
+/* Media queries: (SMALL SMARTPHONES): 425px */
+@media screen and (max-width: 425px) {
+  .card {
+    max-width: 300px;
+  }
 }
