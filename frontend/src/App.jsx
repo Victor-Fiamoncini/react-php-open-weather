@@ -28,6 +28,15 @@ export default class App extends Component {
     event.preventDefault()
     const city = event.target.city.value
     const country = event.target.country.value
+    const hasNumber = /\d/
+    if (hasNumber.test(city) || hasNumber.test(country)) return this.setState({ 
+      temperature: undefined,
+      city: undefined,
+      country: undefined,
+      humidity: undefined,
+      description: undefined,
+      error: 'Invalid value' 
+    })
     if (city && country) {
       const data = await axios.get(`
         http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
