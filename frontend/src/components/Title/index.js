@@ -5,9 +5,11 @@ import React from 'react'
 import './style.css'
 
 // Title:
-export const Title = () => (
+const Title = () => (
   <div className="title-wrapper">
     <h1>Wheater Finder</h1>
     <p>Find out temperature, conditions and more...</p>
   </div>
 )
+
+export default Title
