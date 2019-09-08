@@ -1,14 +1,16 @@
 .title-wrapper {
   background: url("../../images/bg.jpg") center center no-repeat;
-  background-size: cover;
-  min-height: 550px;
-  height: 100%;
+  background-size: 100% 100%;
+  min-height: 440px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0px 15px;
   text-align: center;
+
+  background-size: 100% 128%;
+  min-height: 352px;
 }
 
 .title-wrapper > h1 {

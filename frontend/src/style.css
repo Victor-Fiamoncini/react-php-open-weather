@@ -12,11 +12,12 @@
 
 body {
   font-family: "Open Sans", serif;
+  background: linear-gradient(to right, #e67e22, #f1919d);
+  height: 100%;
+  padding: 30px 0;
 }
 
 .container {
-  background: linear-gradient(to right, #e67e22, #e74c3c);
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,10 +27,11 @@ body {
 .card {
   box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
   display: flex;
+  flex-direction: column;
+  min-width: 500px;
 }
 
 .main-wrapper {
-  min-height: 50vh;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -52,4 +54,18 @@ body {
   .card {
     max-width: 300px;
   }
+}
+
+/* Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #777; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #48a597; 
 }

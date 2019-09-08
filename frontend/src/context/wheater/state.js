@@ -6,27 +6,29 @@ import WeatherContext from './context'
 import weatherReducer from './reducer'
 
 // Action types:
-import { UPDATE_WEATHER } from '../types'
+import { UPDATE_WEATHER, SET_LOADING } from '../types'
 
 // Others:
-import axios from 'axios'
+import { openWeatherMap } from '../../config/api'
 
 // Actions:
 const WeatherState = props => {
   // Initial state:
   const INITIAL_STATE = {
-    temperature: undefined,
     city: undefined,
     country: undefined,
-    humidity: undefined,
-    description: undefined,
-    error: undefined
+    hours: [],
+    error: undefined,
+    loading: false
   }
 
   const [state, dispatch] = useReducer(weatherReducer, INITIAL_STATE)
 
-  // Actions:
-  async function getWeather(event) {
+  // Set Loading:
+  const setLoading = () => dispatch({ type: SET_LOADING })
+
+  // Get weather:
+  const getWeather = async event => {
     event.preventDefault()
     const city = event.target.city.value
     const country = event.target.country.value
@@ -35,29 +37,40 @@ const WeatherState = props => {
     if (hasNumber.test(city) || hasNumber.test(country)) dispatch({ 
       type: UPDATE_WEATHER,
       payload: {
-        temperature: undefined,
         city: undefined,
         country: undefined,
-        humidity: undefined,
-        description: undefined,
-        error: 'Invalid value' 
+        hours: [],
+        error: 'Invalid value'
       }
     })
     if (city && country) {
-      const data = await axios.get(`
-        http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`
-      )
-      dispatch({
-        type: UPDATE_WEATHER,
-        payload: {
-          temperature: data.data.main.temp,
-          city: data.data.name,
-          country: data.data.sys.country,
-          humidity: data.data.main.humidity,
-          description: data.data.weather[0].description,
-          error: undefined
-        }
-      })
+      setLoading()
+      const response = await openWeatherMap.get(`?q=${city},${country}&appid=${API_KEY}`)
+      if (response.cod === '404') {
+        dispatch({
+          type: UPDATE_WEATHER,
+          payload: {
+            city: undefined,
+            country: undefined,
+            hours: [],
+            error: response.message,
+            loading: true
+          }
+        })
+      } else {
+        const { data } = response 
+        dispatch({
+          type: UPDATE_WEATHER,
+          payload: {
+            city: data.city.name,
+            country: data.city.country,
+            hours: data.list,
+            error: undefined,
+            loading: true
+          }
+        })
+        // Request PHP ...  
+      }
     } else {
       dispatch({
         type: UPDATE_WEATHER,
@@ -65,8 +78,7 @@ const WeatherState = props => {
           temperature: undefined,
           city: undefined,
           country: undefined,
-          humidity: undefined,
-          description: undefined,
+          hours: [],
           error: 'Invalid inputs'
         }
       })
