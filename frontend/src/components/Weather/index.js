@@ -41,7 +41,7 @@ const Weather = () => {
               <div className="main" key={hour.dt}>
                 <div className="desc">
                   <span>
-                    {moment.unix(hour.dt).format('DD/MM/YYYY').toString()}
+                    {moment.unix(hour.dt).format('DD/MM/YYYY HH:mm').toString()}
                   </span>
                   <p>{hour.weather[0].description}</p>
                 </div>

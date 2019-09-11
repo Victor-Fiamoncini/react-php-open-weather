@@ -9,7 +9,7 @@ import weatherReducer from './reducer'
 import { UPDATE_WEATHER, SET_LOADING } from '../types'
 
 // Others:
-import { openWeatherMap } from '../../config/api'
+import { openWeatherMap, apache } from '../../config/api'
 
 // Actions:
 const WeatherState = props => {
@@ -69,7 +69,15 @@ const WeatherState = props => {
             loading: true
           }
         })
-        // Request PHP ...  
+        // Request to PHP server:  
+        const config = { headers: {
+          'content-type': 'multipart/form-data',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*'
+      } }
+        const body = JSON.stringify(data);
+        const response2 = await apache.post('victor/weather-app/backend/index.php', body, config)
+        console.log(response2);
       }
     } else {
       dispatch({

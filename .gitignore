@@ -6,9 +6,6 @@
 # others
 /frontend/.env
 
-# production
-/frontend/src/config/api.js
-
 # misc
 .DS_Store
 .env.local
