@@ -8,5 +8,5 @@ export const openWeatherMap = axios.create({
 
 // Base URL #2:
 export const apache = axios.create({
-  baseURL: `http://localhost:80`,
+  baseURL: `http://localhost:80`
 })
